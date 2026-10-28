@@ -18,7 +18,7 @@ git remote get-url origin >/dev/null 2>&1 || git remote add origin https://githu
 git push -u origin main
 
 echo "Building"
-$FLUTTER build web --release --base-href "/$REPO/"
+MSYS_NO_PATHCONV=1 $FLUTTER build web --release --base-href "/$REPO/"
 cp build/web/index.html build/web/404.html   # SPA fallback
 
 echo "Publishing gh-pages"
